@@ -20,7 +20,15 @@ repos:
     rev: 24.4.2
     hooks:
     -   id: black
--   repo: https://github.com/pylint-dev/pylint
-    rev: v3.2.2
+# Pre-commit has separate env where it installs and runs hooks, so they can be reused. This causes
+# problems for hooks that require a state that is only present in your environment, e.g. pylint
+# needs to access deps you installed in your venv.
+# See: https://pre-commit.com/#repository-local-hooks
+-   repo: local
     hooks:
     -   id: pylint
+        name: pylint
+        entry: pylint
+        language: system
+        types: [python]
+        require_serial: true

@@ -1,6 +1,5 @@
-# PowerShell 7 script to runs pre-commit checks.
-# Meant for local manual usage. Execute it before doing commit or creating Pull Request, run from the project
-# directory, i.e.:
+# PowerShell 7 script to setup local environment for development.
+# Meant for local manual usage. Execute it once to setup your env, run from the project directory, i.e.:
 # $ script\pre-commit.ps1
 
 # Check if running from proper directory location.
@@ -28,8 +27,10 @@ function RunOrDie {
     }
 }
 
+Write-Output "Create Python Virtual Environment."
+python -m venv venv
 & venv\Scripts\activate
-RunOrDie pre-commit run "--all-files"
+pip install -r backend\requirements.txt
+# Need pylint locally for pre-commit setup, see ../.pre-commit-config.yaml
+pip install pylint
 deactivate
-
-Write-Output "All pre-commit checks completed."
