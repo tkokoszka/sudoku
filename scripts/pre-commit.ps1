@@ -24,11 +24,12 @@ function RunOrDie {
     Invoke-Expression $($Cmd -join " ")
     if ($LASTEXITCODE -ne 0) {
         Write-Error "Command '$Cmd' failed"
+        deactivate
         exit 1
     }
 }
 
-& venv\Scripts\activate
+venv\Scripts\activate
 RunOrDie pre-commit run "--all-files"
 deactivate
 

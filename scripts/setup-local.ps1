@@ -1,6 +1,6 @@
 # PowerShell 7 script to setup local environment for development.
 # Meant for local manual usage. Execute it once to setup your env, run from the project directory, i.e.:
-# $ script\pre-commit.ps1
+# $ script\setup-local.ps1
 
 # Check if running from proper directory location.
 if (-not (Test-Path -Path 'scripts' -PathType Container)) {
