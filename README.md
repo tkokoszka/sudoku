@@ -26,7 +26,7 @@ scripts/setup-local.ps1
 
 ```powershell
 venv\Scripts\activate
-python backend\src\server_main.py
+python backend\server_main.py
 deactivate
 ```
 

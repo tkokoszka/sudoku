@@ -19,7 +19,7 @@ Remove-Item -Path "$outPackageFile" -Force -ErrorAction SilentlyContinue
 New-Item -Path "$outDir" -Force -ItemType Directory
 
 # Copy the source.
-Copy-Item -Path "backend\src\*.py" -Destination "$outDir\"
+Copy-Item -Path "backend\*.py" -Destination "$outDir\"
 
 # Install packages.
 pip install -r "backend\requirements.txt" --target "$outDir\"
